@@ -8,14 +8,15 @@ class Bike_Shops:
     def __init__(self,name):
         self.name = name
         
-    def Inventory(self,object):
+    def Inventory(self,bike):
         self.inventory_list = list()
-        self.inventory_list.append(object)
+        self.inventory_list.append(bike)
         
         
-    def Markup(self,cost):
+    def Markup(self,markup):
         for bike in self.Inventory.inventory_list:
-            bike.cost * self.Markup
+            self.markup = markup
+            bike.cost * markup
         
     def Profit(self,profit):
         for Bike in self.Inventory.inventory_list:
@@ -47,9 +48,10 @@ Warner = Bike_Shops("Warner")
 Warner.Inventory(Speeder)
 Warner.Inventory(Fireball)
 Warner.Inventory(Death)
+Warner.Inventory(Heracles)
 Warner.Inventory(Skull)
 Warner.Inventory(Vishnu)
-Warner.Inventory(Heracles)
 
-for item in Warner.Inventory.inventory_list:
-    print str(item.name)
+
+for items in Warner.inventory_list:
+    print items.name
