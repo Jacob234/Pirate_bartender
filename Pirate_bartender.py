@@ -14,6 +14,7 @@ ingredients = {
     "sweet": ["sugar cube", "spoonful of honey", "spash of cola"],
     "fruity": ["slice of orange", "dash of cassis", "apple on top"]
 }
+
 Drink = []
 Tastes = { }
 Prefer = [ ]
