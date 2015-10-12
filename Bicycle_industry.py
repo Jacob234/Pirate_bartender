@@ -1,5 +1,5 @@
-Bikes_sold = list()
 class Bicycle(object):
+
     def __init__(self,name,weight,cost, number):
         self.name=name
         self.weight=float(weight)
@@ -8,55 +8,39 @@ class Bicycle(object):
         self.markup = self.cost * markup
         self.profit = self.markup-self.cost
        
-
-    
-class Bike_Shops(Bicycle):
-    def __init__(self,name):
+       
+class Bike_Shops(object):
+    def __init__(self, name):
         self.name = name
         self.inventory_list = list()
-        Bikes_sold = list()
-       
-    
+        self.Bikes_sold = list()
+        self.running_profit = 0
     
     def Inventory(self,bike):
         self.inventory_list.append(bike)
-        
+    
+    def SellBike(self,bike):
+        self.Bikes_sold.append(bike)
         
     def Markup(self,markup):
         for bike in self.inventory_list:
             bike.markup = bike, bike.cost * markup
-            
-    def Profit (self,pro):
-         self.pro = float(pro)
-        
-    def Det_Profit(self,pro):
-        for bike in Bikes_sold:
-            self.pro += bike.profit
 
-class Customer(Bike_Shops):
+
+class Customer(object):
     def __init__(self,name):
         self.name = name
         self.Bought = list()
-        
-    
+
     def Fund(self,fund):
         self.fund = float(fund)
         
-    def Buy(self, bike):
+    def Buy(self, bike_shop, bike):
         self.Bought.append(self.Buy)
         self.fund -= bike.markup
+        bike_shop.running_profit += bike.profit
         bike.number -= 1
-        Bikes_sold.append(bike)
-        
-
-
-
-
-
-
-
-
-
+        bike_shop.Bikes_sold.append(bike)
 
 
 markup = 1.2
@@ -125,17 +109,22 @@ for items in Warner.inventory_list:
 
 
 
-Jim.Buy(Skull)
+
+    
+
+
+
+Jim.Buy(Warner,Skull)
 print "The bike Jim bought was {}".format(Skull.name)
 print "The cost was {}".format(Skull.cost)
 print "Jim has {} dollars left.".format(Jim.fund)
 
-James.Buy(Speeder)
+James.Buy(Warner,Speeder)
 print "The bike James bought was {}".format(Speeder.name)
 print "The cost was{}".format(Speeder.cost)
 print "James has {} dollars left.".format(James.fund)   
 
-Jane.Buy(Vishnu)
+Jane.Buy(Warner,Vishnu)
 print "The bike Vishnu bought was {}".format(Vishnu.name)
 print "The cost was {}".format(Vishnu.cost)
 print "Jane has {} dollars left.".format(Jane.fund)
@@ -144,4 +133,5 @@ print "There are {} {}s left.".format(Skull.number,Skull.name)
 print "There are {} {}s left.".format(Speeder.number,Speeder.name)
 print "There are {} {}s left.".format(Vishnu.number,Vishnu.name)
 
-print "The bike shop made {} dollars.".format(Warner.pro)
+
+print "The bike shop made {} dollars.".format(Warner.running_profit)
